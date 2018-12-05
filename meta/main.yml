@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  author: shashikant86
+  author: enflick
   description: Fully automated and customised macOS setup for iOS development & CI
   license: "license (BSD, MIT)"
   min_ansible_version: 2.2

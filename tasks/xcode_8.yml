@@ -1,6 +1,6 @@
 ---
 - name: Check if Xcode is already installed
-  stat: path=/Library/Developer/Xcode/
+  stat: path=/Applications/Xcode.app
   register: xcode_dir
 
 - name: test whether xcode was uploaded earlier

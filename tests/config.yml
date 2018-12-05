@@ -8,7 +8,7 @@ homebrew_upgrade_all_packages: no
 use_mac_store: no
 
 xcode_major_version: 8
-xcode_src: Xcode_8.2.1.xip
+xcode_src: Xcode_10.1.xip
 
 homebrew_install_path: /usr/local/homebrew
 
@@ -61,6 +61,6 @@ mas_email: ""
 mas_password: ""
 mas_installed_app_ids: [] # Don't use this option
 mas_installed_apps:
-  - { id: 497799835, name: "Xcode (8.1)" }
+  - { id: 497799835, name: "Xcode (10.1)" }
 
 mas_upgrade_all_apps: no

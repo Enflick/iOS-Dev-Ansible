@@ -1,12 +1,13 @@
 ---
-- name: Ensure Homebrew parent directory has correct permissions.
-  file:
-    path: "{{ homebrew_prefix }}"
-    owner: root
-    group: admin
-    state: directory
-    mode: 0775
-  become: yes
+# This step will always fail on newer OSX versions
+#- name: Ensure Homebrew parent directory has correct permissions.
+#  file:
+#    path: "{{ homebrew_prefix }}"
+#    owner: root
+#    group: admin
+#    state: directory
+#    mode: 0775
+#  become: yes
 
 - name: Ensure Homebrew directory exists.
   file:

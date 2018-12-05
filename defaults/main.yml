@@ -6,9 +6,9 @@ configure_ruby_rvm: yes
 homebrew_upgrade_all_packages: no
 use_mac_store: no
 
-xcode_src: Xcode_8.2.1.xip
+xcode_src: Xcode_10.1.xip
 
-ruby_version: 2.3.0
+ruby_version: 2.4.0
 rubygems_packages_to_install:
   - bundler
   - xcpretty
@@ -54,9 +54,6 @@ homebrew_installed_packages:
 homebrew_taps:
   - homebrew/core
   - caskroom/cask
-  - homebrew/binary
-  - homebrew/dupes
-  - homebrew/versions
 
 homebrew_cask_appdir: /Applications
 
@@ -67,6 +64,6 @@ mas_email: ""
 mas_password: ""
 mas_installed_app_ids: [] # Don't use this option
 mas_installed_apps:
-  - { id: 497799835, name: "Xcode (8.1)" }
+  - { id: 497799835, name: "Xcode (10.1)" }
 
 mas_upgrade_all_apps: no
