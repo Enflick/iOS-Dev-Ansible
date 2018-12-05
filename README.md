@@ -1,5 +1,6 @@
+This repo has been forked because it did not work with the newest version of ansible.
 
-[![CI Status](http://img.shields.io/travis/Shashikant86/iOS-Dev-Ansible.svg?style=flat)](https://travis-ci.org/Shashikant86/iOS-Dev-Ansible)
+You can find the original documentation below
 
 Ansible Provisioning of iOS Development & Continuous Integration
 =========
