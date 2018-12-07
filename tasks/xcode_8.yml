@@ -65,7 +65,6 @@
   become_method: sudo
   register: dev_tools_security_status
 
-
 - name: enable developer mode
   command: DevToolsSecurity -enable
   become: yes

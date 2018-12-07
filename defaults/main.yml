@@ -13,7 +13,7 @@ rubygems_packages_to_install:
   - bundler
   - xcpretty
 
-swift_version_custom: 3.0.1
+swift_version_custom: 4.2
 
 macos_sleep_options:
   - systemsetup -setsleep Never
@@ -41,7 +41,8 @@ homebrew_installed_packages:
   - bash-completion
   - git
   - carthage
-  - gpg
+  - gnupg2
+  - gnupg 
   - boost
   - cmake
   - ssh-copy-id

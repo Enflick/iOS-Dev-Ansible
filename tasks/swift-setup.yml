@@ -12,13 +12,13 @@
 #   command: bash -c 'echo "if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi' >> ~/.bash_profile"'
 
 - name: Install Custom Swift
-  command: swiftenv install {{ swift_version_custom  }}
+  command: /usr/local/bin/swiftenv install {{ swift_version_custom  }}
 
 - name: Rehash Swift
-  command: swiftenv rehash
+  command: /usr/local/bin/swiftenv rehash
 
 - name: Change Swift Globally
-  command: swiftenv global {{ swift_version_custom  }}
+  command: /usr/local/bin/swiftenv global {{ swift_version_custom  }}
 
 - name: Print New Swift Version
-  command: swiftenv which swift
+  command: /usr/local/bin/swiftenv which swift

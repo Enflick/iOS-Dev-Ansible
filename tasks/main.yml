@@ -20,9 +20,10 @@
   include: ruby-setup.yml
   when: configure_ruby_rvm
 
-- name: Setup Custom Swift
-  include: swift-setup.yml
-  when: configure_custom_swift
+# We don't need this step
+#- name: Setup Custom Swift
+#  include: swift-setup.yml
+#  when: configure_custom_swift
 
 - name: Run macOS Tasks
   include: macos-defaults.yml

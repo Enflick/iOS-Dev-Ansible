@@ -4,15 +4,16 @@
   register: rvm_dir
 
 - name: Install GPG key for RVM
-  command: bash -c "gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3"
+  shell: /usr/local/bin/gpg --keyserver hkp://pgp.mit.edu --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
   when: rvm_dir.stat.exists == False
+  become_user: jenknis
 
 - name: Install RVM for the user
-  command: bash -c "\curl -sSL https://get.rvm.io | bash -s -- --ignore-dotfiles"
+  shell: curl -sSL https://get.rvm.io | bash -s -- --ignore-dotfiles
   when: rvm_dir.stat.exists == False
 
 - name: Add RVM to the users bash profile
-  command: bash -c 'echo "source $HOME/.rvm/scripts/rvm" >> ~/.bash_profile'
+  command: echo "source $HOME/.rvm/scripts/rvm" >> ~/.bash_profile
   when: rvm_dir.stat.exists == False
 
 - name: Add RVM to profile
@@ -20,15 +21,15 @@
   when: rvm_dir.stat.exists == False
 
 - name: Install ruby version
-  command: bash -c "~/.rvm/bin/rvm install {{ ruby_version }}"
+  command: ~/.rvm/bin/rvm install {{ ruby_version }}
   when: rvm_dir.stat.exists == False
 
 - name: Set Ruby Default
-  command: bash -c "~/.rvm/bin/rvm default {{ ruby_version }}"
+  command: ~/.rvm/bin/rvm default {{ ruby_version }}
   when: rvm_dir.stat.exists == False
 
 - name: Setup Installed Ruby
-  command: bash -c 'echo "rvm default {{ ruby_version }} " >> ~/.bash_profile'
+  shell: rvm default {{ ruby_version }} >> ~/.bash_profile
   when: rvm_dir.stat.exists == False
 
 - name: Install Ruby Gems required for iOS app developement
