@@ -28,3 +28,6 @@
 - name: Run macOS Tasks
   include: macos-defaults.yml
   when: configure_macos_defaults
+
+- name: Install Jenkins Swarm Client
+  include: jenkins-swarm.yml

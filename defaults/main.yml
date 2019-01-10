@@ -12,6 +12,7 @@ ruby_version: 2.4.0
 rubygems_packages_to_install:
   - bundler
   - xcpretty
+  - aws-sdk
 
 swift_version_custom: 4.2
 
@@ -55,11 +56,12 @@ homebrew_installed_packages:
 homebrew_taps:
   - homebrew/core
   - caskroom/cask
+  - AdoptOpenJDK/openjdk
 
 homebrew_cask_appdir: /Applications
 
 homebrew_cask_apps:
-  - java
+  - adoptopenjdk-openjdk8
 
 mas_email: ""
 mas_password: ""
@@ -68,3 +70,5 @@ mas_installed_apps:
   - { id: 497799835, name: "Xcode (10.1)" }
 
 mas_upgrade_all_apps: no
+
+swarm_version: 3.9

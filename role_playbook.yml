@@ -68,8 +68,7 @@
     homebrew_cask_appdir: /Applications
 
     homebrew_cask_apps:
-      - java
-
+      - adoptopenjdk-openjdk8
 
   tasks:
     - include: tasks/ansible.yml

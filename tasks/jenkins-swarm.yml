@@ -1,0 +1,81 @@
+---
+- homebrew:
+    name: python@2
+    state: latest
+
+- shell: "bash -c -l 'pip install tinys3'"
+  become: jenkins
+
+- gem:
+    name: bundler
+    state: latest
+
+- gem:
+    name: aws-sdk
+    state: latest
+
+- homebrew:
+    name: git-lfs
+    state: present
+
+- shell: "/bin/bash -l -c '/usr/local/bin/git lfs install'"
+
+- get_url:
+    dest: "/Users/jenkins/awscli-bundle.zip"
+    url: "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip"
+
+- unarchive:
+    src: "/Users/jenkins/awscli-bundle.zip"
+    dest: "/Users/jenkins/"
+    remote_src: true
+
+- shell: "/Users/jenkins/awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws" 
+  become: true
+
+- name: Check for the swarm client jar
+  stat: 
+    path: "/Users/jenkins/swarm-client-{{ swarm_version }}.jar"
+  register: swarm_client
+
+- name: Download swarm client jar
+  get_url: 
+    dest: "/Users/jenkins/swarm-client-{{ swarm_version }}.jar"
+    url: "https://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/{{ swarm_version }}/swarm-client-{{ swarm_version }}.jar"
+  when: swarm_client.stat.exists == False
+
+- name: Ensure proper permissions for swarm client jar
+  file:
+    path: "/Users/jenkins/swarm-client-{{ swarm_version }}.jar"
+    owner: jenkins
+    group: admin
+    mode: 0755
+
+- name: ensure workspace folder exists
+  file:
+    path: "Users/jenkins/workspace"
+    owner: jenkins
+    group: wheel
+    state: directory
+    mode: 777
+  become: true
+
+- name: replace downloaded swarm client with old swarm client
+  command: "cp /Users/jenkins/swarm-client-{{ swarm_version }}.jar /Users/jenkins/slave.jar"
+
+- name: Ensure Plist file exists
+  copy:
+    src: org.jenkins-slave.plist
+    dest:  	/Library/LaunchDaemons/org.jenkins-slave.plist
+    owner: root
+    group: wheel
+    mode: 0700
+  become: true
+
+- name: unload plist 
+  command: "launchctl unload /Library/LaunchDaemons/org.jenkins-slave.plist"
+  become: true
+
+- name: load plist
+  command: "launchctl load /Library/LaunchDaemons/org.jenkins-slave.plist"
+  become: true
+
