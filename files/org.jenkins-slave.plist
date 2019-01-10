@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>StandardOutPath</key>
+  <string>/Users/jenkins/log/jenkins-slave-out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/jenkins/log/jenkins-slave-err.log</string>
+  <key>EnvironmentVariables</key>
+  <dict>
+	  <key>PATH</key>
+	  <string>/Users/jenkins/.swiftenv/shims:/Users/jenkins/.swiftenv/shims:/Users/jenkins/.rvm/gems/ruby-2.4.1/bin:/Users/jenkins/.rvm/gems/ruby-2.4.1@global/bin:/Users/jenkins/.rvm/rubies/ruby-2.4.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/jenkins/.rvm/bin</string>
+  </dict>
+  <key>KeepAlive</key>
+  <true/>
+  <key>Label</key>
+  <string>jenkins-slave</string>
+  <key>UserName</key>
+  <string>jenkins</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/java</string>
+    <string>-Duser.home=/Users/jenkins</string>
+    <string>-Djava.awt.headless=true</string>
+    <string>-jar</string>
+    <string>/Users/jenkins/slave.jar</string>
+    <string>-disableClientsUniqueId</string>
+    <string>-labels</string>
+    <string>ios</string>
+    <string>-fsroot</string>
+    <string>/Users/jenkins/</string>
+    <string>-deleteExistingClients</string>
+    <string>-executors</string>
+    <string>1</string>
+    <string>-name</string>
+    <string>macbuild7</string>
+    <string>-master</string>
+    <string>http://jenkins-test.enflick.com:8080/</string>
+  </array>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>SessionCreate</key>
+  <true/>
+  <key>ThrottleInterval</key>
+  <integer>30</integer>
+</dict> 
+</plist>
